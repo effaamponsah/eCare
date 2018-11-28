@@ -1,0 +1,5 @@
+<?php
+include('sess.php');
+?>
+
+//then put the html codes here. the page it is redirected to.

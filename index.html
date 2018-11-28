@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Doctor Website Template | Home :: w3layouts</title>
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+     <!-- Custom Theme files -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+       <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    </script>
+     <!---- start-smoth-scrolling---->
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $(".scroll").click(function(event){   
+          event.preventDefault();
+          $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+        });
+      });
+    </script>
+     <!---- start-smoth-scrolling---->
+    <!----webfonts--->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!---//webfonts--->
+    <!----start-top-nav-script---->
+    <script>
+      $(function() {
+        var pull    = $('#pull');
+          menu    = $('nav ul');
+          menuHeight  = menu.height();
+        $(pull).on('click', function(e) {
+          e.preventDefault();
+          menu.slideToggle();
+        });
+        $(window).resize(function(){
+              var w = $(window).width();
+              if(w > 320 && menu.is(':hidden')) {
+                menu.removeAttr('style');
+              }
+          });
+      });
+    </script>
+    <!----//End-top-nav-script---->
+  </head>
+  <body>
+    <!----- start-header---->
+      <div id="home" class="header">
+          <div class="top-header">
+            <div class="container">
+            <div class="logo">
+              <a href="#"><img src="images/logo.png" height = 70 title="doctor" /></a>
+            </div>
+            <!----start-top-nav---->
+             <nav class="top-nav">
+              <ul class="top-nav">
+                <li class="#"><a href="#" class="scroll">Home </a></li>
+              </ul>
+              <a href="#" id="pull"><img src="images/menu-icon.png" title="menu" /></a>
+            </nav>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+    <!----- //End-header---->
+    <!----start-slider-script---->
+      <script src="js/responsiveslides.min.js"></script>
+       <script>
+          // You can also use "$(window).load(function() {"
+          $(function () {
+            // Slideshow 4
+            $("#slider4").responsiveSlides({
+              auto: true,
+              pager: true,
+              nav: true,
+              speed: 500,
+              namespace: "callbacks",
+              before: function () {
+                $('.events').append("<li>before event fired.</li>");
+              },
+              after: function () {
+                $('.events').append("<li>after event fired.</li>");
+              }
+            });
+      
+          });
+        </script>
+      <!----//End-slider-script---->
+      <!-- Slideshow 4 -->
+          <div  id="top" class="callbacks_container">
+            <ul class="rslides" id="slider4">
+              <li>
+                <img src="images/2.jpg" alt="">
+                <div class="caption">
+                  <div class="slide-text-info">
+                    <h2>Welcome to</h2>
+                    <h1>eCare</h1>
+                    <label>HOSPITAL MANAGEMENT SYSTEM</label>
+                    <a class="slide-btn" href="frp/login.php">get started</a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <img src="images/1.jpg" alt="">
+                <div class="caption">
+                  <div class="slide-text-info">
+                    <h1>efficient</h1>
+                    <label>hospital management</label>
+                    <!--<a class="slide-btn" href="#">learn more</a>-->
+                  </div>
+                </div>
+              </li>
+              <li>
+                <img src="images/slide1.jpg" alt="">
+                 <div class="caption">
+                  <div class="slide-text-info">
+                    <h1>quick</h1>
+                    <label>hospital management</label>
+                    <!--<a class="slide-btn" href="#">learn more</a>-->
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="clearfix"> </div>
+      <!----- //End-slider---->
+      <!---- about ---->
+      <div id="about" class="about">
+        <div class="container">
+          <div class="header about-header text-center">
+            <h2>About eCare HMS</h2>
+            <p>The eCare Hospital Management System is an effective computerized management structure which is purposely meant to replace the ‘traditional’ hospital management process which can be really slow. With eCare HMS, you have...</p>
+          </div>
+          <!---- About-grids ---->
+          <div class="about-grids">
+            <div class="col-md-4">
+              <div class="about-grid">
+                <img src="images/img1.jpg" title="name" />
+                <span class="t-icon1"> </span>
+                <div class="about-grid-info text-center">
+                  <h3><a href="#">Early access to patient data</a></h3>
+                  <p>The HMS stores data in an electronic format or manner which can be retrieved easily. This feature is very helpful when managing out-patient who visit hospital for ongoing treatment. The patient medical info is saved together with important patient data like age, gender and previous medical history. This system ensures the patients’ medical record is available whenever needed.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="about-grid n-about-grid n-about-grid1">
+                <img src="images/img2.jpg" title="name" />
+                <span class="t-icon1"> </span>
+                <div class="about-grid-info text-center">
+                  <h3><a href="#">Improved efficiency</a></h3>
+                  <p>The health care unit will have no problem of delays or missing records even duplicate records. Reduces scope of error It helps nurses to monitor the usage of drugs effectively which leads to better utilization of medicine.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="about-grid n-about-grid n-about-grid2">
+                <img src="images/img3.jpg" title="name" />
+                <span class="t-icon2"> </span>
+                <div class="about-grid-info text-center">
+                  <h3><a href="#">Increased security</a></h3>
+                  <p>The software stores medical data of patients and other relevant info in secured databases. The information inside the databases are only accessed by hospital staff that needs it for their daily duties.</p>
+                </div>
+              </div>
+            </div>
