@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>eCare NURSE PAGE</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../static/css/main.css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../static/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../../static/css/form-elements.css">
+        <link rel="stylesheet" href="../../static/css/sstyle.css">
+
+        <link rel="shortcut icon" href="assets/ico/logo 2.png">
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+						<h1><a id="logo">eCare <em>NURSE PAGE</em></a></h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="/nurse">Home</a></li>
+								<li>
+									<a href="/patientdata">Create Patient Form</a>
+								<li  class="current"><a href="search.html">Search Patient Records</a></li>
+								<li><a href="/logout">Logout</a></li>
+							</ul>
+						</nav>
+				</div>
+
+			<!-- Banner -->
+				<!-- <section id="banner">
+                </section> -->
+                <div class="col-sm-4 col-sm-offset-4">
+						<form role="form" action="/search" method="post" class="r-form">
+	                    	<div class="form-group">
+	                    		<h3><em>SEARCH PATIENT'S RECORD</em></h3>
+								<h4><em>Lookup patients record. Please enter the patient's ID </em></h4>
+	                    		<label class="sr-only" for="r-form-search">Search</label>
+	                        	<input type="text" name="p_id" placeholder="Enter patient ID..." class="r-form-search form-control" id="r-form-search">
+	                        </div>
+	                        
+				            <button type="submit" class="btn">Search</button>
+						</form>
+					</div>
+
+	</body>
+</html>

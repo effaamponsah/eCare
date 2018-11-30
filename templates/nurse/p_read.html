@@ -1,0 +1,52 @@
+<!-- This is where data is read and sent to the dr. -->
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Patient's Form</title>
+  
+  <link rel="stylesheet" href="">
+
+  
+      <link rel="stylesheet" href="../../static/css/prstyle.css">
+
+  
+</head>
+
+<body>
+  <h1>Patient's Form</h1>
+  <form class="cf" action="/readings" method="POST">
+
+    <div class="half left cf">
+    <input type="text" id="input-name" placeholder="Name" name="p_n" required><span>
+	<input type="number" id="input-number" placeholder="Weight" name="p_w" required></span>
+    <input type="number" id="input-number" placeholder="Temperature" name="p_t" required>
+    <input type="number" id="input-number" placeholder="Blood Pressure" name="p_bp" required>
+	<input type="number" id="input-number" placeholder="NHIS Card No(If Applicable)" name="nhis" required>
+    <input type="" id="input-number" placeholder="NHIS Card No(If Applicable)" name="nhis" required>
+   
+   
+    <select name="availabledr">
+        <option value="dr1">Doctor 1</option>
+        <option value="dr2">Doctor 1</option>
+        <option value="dr3">Doctor 1</option>
+        <option value="dr4">Doctor 1</option>
+        <option value="dr5">Doctor 1</option>
+    </select>
+	<!-- <textarea name="message" type="text" id="input-message" placeholder="Symptoms"></textarea> -->
+
+  </div>
+  <!-- <div class="half right cf"> -->
+  
+	<!-- <textarea name="message" type="text" id="input-message" placeholder="Doctors Comments"></textarea>
+	<textarea name="message" type="text" id="input-message" placeholder="Prescribed Drugs"></textarea>
+	<textarea name="message" type="text" id="input-message" placeholder="Lab Results"></textarea> -->
+	<input type="submit" value="Submit" id="input-submit" name="submit1">
+    
+  <!-- </div>   -->
+  
+</form>
+  
+  
+</body>
+</html>

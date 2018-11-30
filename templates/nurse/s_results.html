@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Results form search</title>
+</head>
+<body>
+    <!-- Displays all the data from the results list -->
+    <!-- {% for i in result %}
+        {% for b in range(0, i|length) %}
+            {{ i[b] }}
+        {% endfor%}
+    {% endfor%} -->
+    <h2>Result form Search</h2>
+    <p>Name :: {{ result[0][2]}}</p>
+    <p>Date of Birth :: {{ result[0][3]}}</p>
+    <p>Number :: {{ result[0][4]}}</p>
+    <p>Last Visit :: {{ result[0][5]}}</p>
+
+    <a href="/readings">Take readings</a>
+    <br>
+    <a href="/search">Go Back</a>
+
+</body>
+</html>
