@@ -6,8 +6,10 @@ body {
     font-weight: 300;
     color: #888;
     line-height: 28px;
-    text-align: center;
+	text-align: center;
+	background-image: url('../images/back.jpg');
 }
+
 
 strong { font-weight: 500; }
 

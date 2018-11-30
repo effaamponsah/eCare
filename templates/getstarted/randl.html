@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>eCare</title>
+
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../static/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../../static/css/form-elements.css">
+        <link rel="stylesheet" href="../../static/css/rstyle.css">
+        <link rel="shortcut icon" href="../../static/images/ico/logo 2.png">
+        
+    </head>
+
+    <body>
+
+        <div class="top-content">
+        	<div class="container">
+                	
+                <div class="row">
+                    <div class="col-sm-11 col-sm-offset-0.9 text">
+                        <h1><img src="../../static/images/rlogo.png" height = 100/>Welcome to eCare Hospital Management System</h1>
+                        <div class="description">
+                        </div>
+                    </div>
+                </div>
+                
+                
+                </style>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 show-forms">
+                        <span class="show-register-form active">Register</span> 
+                    	<span class="show-forms-divider">/</span> 
+                    	<span class="show-login-form">Login</span>
+                    </div>
+                </div>
+                
+                <div class="row register-form">
+                    <div class="col-sm-4 col-sm-offset-1">
+						<form role="form" action="/register" method="post" class="r-form">
+	                    	<div class="form-group">
+	                    		<label class="sr-only" for="r-form-first-name">First name</label>
+	                        	<input type="text" name="fname" placeholder="First name..." class="r-form-first-name form-control" id="r-form-first-name">
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="r-form-last-name">Last name</label>
+	                        	<input type="text" name="lname" placeholder="Last name..." class="r-form-last-name form-control" id="r-form-last-name">
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="r-form-Username">Username</label>
+                                <!--<option value = "Hall"> Oguaa </option>-->
+	                        	<input type="text" name="uname" placeholder="Username..." class="r-form-Username form-control" id="r-form-Username">
+	                        </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="r-form-Password">Password</label>
+                                <input type="password" name="pass" placeholder="Password..." class="r-form-Password form-control" id="r-form-Password">
+                            </div>
+				            <button type="submit" class="btn">Sign me up!</button>
+						</form>
+                    </div>
+                    <div class="col-sm-6 forms-right-icons">
+						<div class="row">
+							<div class="col-sm-2 icon"><i class="fa fa-pencil"></i></div>
+							<div class="col-sm-10">
+								<h4>About eCare HMS</h4>
+								<p>The eCare Hospital Management System is an effective computerized management structure which is purposely meant to replace the ‘traditional’ hospital management process which can be really slow. With eCare HMS, you have...</p>
+                        
+                                <h4><strong>Early access to patient data.</strong></h4>
+                                <p>The HMS stores data in an electronic format or manner which can be retrieved easily. This feature is very helpful when managing out-patient who visit hospital for ongoing treatment. The patient medical info is saved together with important patient data like age, gender and previous medical history. This system ensures the patients’ medical record is available whenever needed.
+                                </p>
+							</div>
+						</div>
+						</div>
+						</div>
+                
+                <div class="row login-form">
+                    <div class="col-sm-4 col-sm-offset-1">
+						<form role="form" action="/login" method="post" class="l-form">
+	                    	<div class="form-group">
+	                    		<label class="sr-only">Username</label>
+	                        	<input type="text" name="username" placeholder="Username..." class="l-form-id form-control" id="l-form-username">
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="l-form-password">Password</label>
+	                        	<input type="password" name="password" placeholder="Password..." class="l-form-password form-control" id="l-form-password">
+                            </div>
+                            <input class="btn" type="submit" value="Sign in!" name="submit" >
+				            
+				    	</form>
+				    	
+                    </div>
+                    <div class="col-sm-6 forms-right-icons">
+						<div class="row">
+							<div class="col-sm-2 icon"><i class="fa fa-pencil"></i></div>
+							<div class="col-sm-10">
+								<h4><strong>Improved efficiency</strong></h4>
+                                <p>The health care unit will have no problem of delays or missing records even duplicate records. 
+                                Reduces scope of error
+                                It helps nurses to monitor the usage of drugs effectively which leads to better utilization of medicine.
+                                </p>
+
+                                <h4><strong>Increased security</strong></h4>
+                                <p>The software stores medical data of patients and other relevant info in secured databases.
+                                The information inside the databases are only accessed by hospital staff that needs it for their daily duties.
+                                </p>
+							</div>
+						</div>
+                    </div>
+                </div>
+                    
+        	</div>
+        </div>
+
+        <footer>
+        	<div class="container">
+        		<div class="row">
+        			
+        		</div>
+        	</div>
+        </footer>
+
+        <script src="../../static/js/jquery-1.11.1.min.js"></script>
+        <script src="../../static/js/bootstrap.min.js"></script>
+        <script src="../../static/js/jquery.backstretch.min.js"></script>
+        <script src="../../static/js/scripts.js"></script>
+        
+    </body>
+
+</html>
