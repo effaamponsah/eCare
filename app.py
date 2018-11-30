@@ -4,12 +4,28 @@ import os
 
 app = Flask(__name__)
 
+
+fullname=''
+name = ''
+availble = False
+
 @app.route('/')
 def index():
+
     if not session.get('logged_in'):
         return render_template('getstarted/index.html')
     else:
-        return "Hello Boss!  <a href='/logout'>Logout</a>"
+        # global name
+        if name == 'D':
+            return render_template('dr/index.html')
+        elif name == 'N':
+            return render_template('nurses/index.html')
+        else:
+            return render_template('error.html')   
+        print('This is new name', name)
+    
+    return "Hello Boss!  <a href='/logout'>Logout</a>"
+    
 
 
 @app.route('/login', methods=['POST'])
@@ -22,10 +38,18 @@ def login():
     c.execute("SELECT * from staff WHERE Uname= ? AND Password=?", (uname, password) )
     result =c.fetchall()
 
+# the result returns a list which is empty if the query is not found else returns something if 
+# a result if found
     if len(result) == 0:
         return render_template('error.html') 
     else:
         session['logged_in'] = True
+
+        # the first variable gets the first of the character sequence entered and makes a route based on that
+        first = result[0][3][:1]
+        global name
+        name = first
+        print(name)
     return index()
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -52,7 +76,9 @@ def logout():
     session['logged_in'] = False
     return index()
 
-
+@app.route('/temp')
+def temp():
+    return render_template('dr/index.html')
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(12)
