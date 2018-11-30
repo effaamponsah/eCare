@@ -2,7 +2,6 @@ from flask import Flask, render_template, session, request, abort, redirect, fla
 import sqlite3 as sql
 import os
 
-
 app = Flask(__name__)
 
 @app.route('/')
@@ -15,10 +14,18 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    if request.form['password'] == 'password' and request.form['username'] == 'admin':
-        session['logged_in'] = True
+    uname = str(request.form['username'])
+    password = str(request.form['password'])
+
+    con = sql.connect('hms.db')
+    c = con.cursor()
+    c.execute("SELECT * from staff WHERE Uname= ? AND Password=?", (uname, password) )
+    result =c.fetchall()
+
+    if len(result) == 0:
+        return render_template('error.html') 
     else:
-        print('Wrong user name and ir')
+        session['logged_in'] = True
     return index()
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -31,8 +38,10 @@ def register():
         lname = str(request.form['lname'])
         uname = str(request.form['uname'])
         password = str(request.form['pass'])
-        c.execute("INSERT INTO staff (FName, LName, Uname, Password, Available) VALUES(?,?,?,0)", (fname,lname, uname,password,))
+        c.execute("INSERT INTO staff (FName, LName, Uname, Password, Available) VALUES(?,?,?,?,?)", (fname,lname, uname,password,0,))
         con.commit()
+        print('Data successfully added')
+        return 'Data Success'
        
     return render_template('getstarted/randl.html')
 
