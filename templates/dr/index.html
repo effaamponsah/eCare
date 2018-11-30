@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- <p>This is the Doctors Page</p> -->
     <p>Welcome Dr. {{ fullname }}</p>
-    <a href='/logout'>Logout</a>
-</body>
+    <a href="/logout">Logout</a>
+
+    <br />
+    {% if availble == 1 %}
+    <p>Status :: Available</p>
+    {% else %}
+    <p>Status :: Not Available</p>
+    {% endif %}
+
+    <form action="/dr" method="POST">
+      <input
+        type="radio"
+        id="yes"
+        value="Yes"
+        name="available"
+        class="btn-switch__radio btn-switch__radio_yes"
+      />
+      <input
+        type="radio"
+        checked
+        id="no"
+        name="available"
+        value="No"
+        class="btn-switch__radio btn-switch__radio_no"
+      />
+      <label for="yes" class="btn-switch__label btn-switch__label_yes"
+        ><span class="btn-switch__txt">Yes</span></label
+      >
+      <label for="no" class="btn-switch__label btn-switch__label_no"
+        ><span class="btn-switch__txt">No</span></label
+      >
+      <button type="submit">Update Status</button>
+    </form>
+  </body>
 </html>

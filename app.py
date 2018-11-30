@@ -9,7 +9,10 @@ app = Flask(__name__)
 
 fullname=''
 name = ''
-availble = False
+availble = False,
+staff_id ='',
+tempname= ''
+temp_id =''
 
 def ids():
     '''
@@ -27,6 +30,10 @@ def ids():
     return c_id
 
 def now():
+    '''
+     A small function which returns the current date and time
+
+    '''
     n = datetime.datetime.now()
     return n.strftime("%Y-%m- %d %H:%M")
 
@@ -40,7 +47,7 @@ def index():
     if not session.get('logged_in'):
         return render_template('getstarted/index.html')
     else:
-        # global name
+        global name
         if name == 'D':
             return redirect(url_for('dr'))
         elif name == 'N':
@@ -72,12 +79,16 @@ def login():
 
         # the first variable gets the first of the character sequence entered and makes a route based on that
         
-        global name, fullname
+        global name, fullname, availble, staff_id
         first = result[0][3][:1]
         fullname = result[0][1]
+        availble = result[0][5]
+        staff_id = result[0][3]
         name = first
         print(name)
     return index()
+
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -103,10 +114,54 @@ def logout():
     session['logged_in'] = False
     return index()
 
-@app.route('/dr')
+
+
+
+@app.route('/dr', methods=['GET', 'POST'])
 def dr():
-    print("Name of Dr is", fullname)
-    return render_template('dr/index.html', fullname=fullname)
+    global fullname, availble, staff_id
+    temp = str(staff_id)
+    # if request.method == 'GET':
+    #     print("Name of Dr is", fullname)
+   
+    # print(temp)
+    # 
+    # The following 4 statement is useless
+    #  
+    # con = sql.connect('hms.db')
+    # c = con.cursor()
+    # c.execute("SELECT FName from staff WHERE Uname= ?", (temp,) )
+    # y = c.fetchone()
+
+    # print(y) 
+    
+    if request.method == 'POST':
+        con = sql.connect('hms.db')
+        c = con.cursor()
+        d_available = request.form['available']
+
+        if d_available == 'Yes':
+            c.execute("UPDATE staff SET Available = ?  WHERE Uname= ?", (1, staff_id))
+            con.commit()
+            availble = 1
+            return redirect(url_for('dr'))
+        else:
+            c.execute("UPDATE staff SET Available = ?  WHERE Uname= ?", (0, staff_id,))
+            con.commit()
+            availble = 0
+            return redirect(url_for('dr'))
+        print("Status from check", d_available)
+    print("Status", availble)
+
+
+
+
+    return render_template('dr/index.html', fullname=fullname, availble=availble)
+
+
+
+
+
 
 @app.route('/nurse')
 def nurse():
@@ -116,6 +171,7 @@ def nurse():
 def patientdata():
     con = sql.connect('hms.db')
     c = con.cursor()
+
     if request.method == 'POST':
         p_id = ids()
         p_name = str(request.form['p_name'])
@@ -140,13 +196,47 @@ def search():
         c.execute("SELECT * from patients WHERE Patients_ID= ?", (p_id,) )
         result =c.fetchall()
         print(result)
+
+        # fetches the name and id of the patient which will be used in
+        #the readings route
+        global tempname, temp_id
+        tempname = result[0][2]
+        temp_id = result[0][1]
         return render_template('nurse/s_results.html', result=result)
     return render_template('nurse/search.html')
 
 
 @app.route('/readings', methods=['GET', 'POST'])
 def read():
-    return render_template('nurse/p_read.html')
+    con = sql.connect('hms.db')
+    c = con.cursor()
+
+    # fetch for the drs who are available
+    c.execute("SELECT FName, UName from staff WHERE Available= 1")
+    r = c.fetchall()
+    
+    print ("Available Drs. ",r)
+
+
+    if request.method == 'POST':
+        # p_n = str(request.form['p_n'])
+        global tempname, temp_id
+
+        p_n = tempname
+        p_w = str(request.form['p_w'])
+        p_t = str(request.form['p_t'])
+        p_bp = str(request.form['p_bp'])
+        nhis = str(request.form['nhis'])
+        dr_available = str(request.form['availabledr'])
+        timestamp = now()
+        c.execute("INSERT INTO patients_readings (P_ID, Name, Weight, Temperature,BP, NHIS, Time_Taken) VALUES(?,?,?,?,?,?,?)", (temp_id,p_n, p_w, p_t, p_bp,nhis, timestamp))
+        con.commit()
+        print("Data was sent to ", dr_available)
+        print('Data successfully added')
+        return '''
+        <a href="/">Go home</a>
+        '''
+    return render_template('nurse/p_read.html', r=r)
 
 @app.route('/temp')
 def temp():

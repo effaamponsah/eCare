@@ -30,3 +30,27 @@ INSERT INTO patients (
     VALUES(?,?,?,?,?), 
     (p_id, p_name, p_dob, p_contact,timestamp)
     )
+
+CREATE TABLE patients_readings (
+    id integer primary key not null,
+    P_ID text not null,Name text not null,
+    Weight integer not null,
+    Temperature integer not null,
+    BP integer not null,
+    NHIS char,
+    Time_Taken text)
+
+
+UPDATE staff SET Available = ? 
+ WHERE Uname= ?, (1, staff_id,)
+
+
+CREATE TABLE patients_readings (
+    id integer primary key not null,
+    P_ID text not null,Name text not null,
+    Weight integer not null,
+    Temperature integer not null,
+    BP integer not null,
+    NHIS char,
+    Time_Taken text)
+
