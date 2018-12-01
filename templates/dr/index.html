@@ -35,10 +35,10 @@
           class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center"
         >
           <a class="navbar-brand brand-logo" href="#">
-            <img src="images/logo.svg" alt="logo" />
+            <img src="../../static/images/logo.png" alt="logo" />
           </a>
           <a class="navbar-brand brand-logo-mini" href="#">
-            <img src="images/logo-mini.svg" alt="logo" />
+            <img src="../../static/images/logo.png" alt="logo" />
           </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -50,7 +50,7 @@
             </li>
             <li class="nav-item active">
               <a href="#" class="nav-link">
-                <i class="fa fa-elevation-rise"></i>Reports</a
+                <i class="fa fa-bar-chart-o"></i>Reports</a
               >
             </li>
             <!-- <li class="nav-item">
@@ -68,7 +68,7 @@
                 href="#"
                 data-toggle="dropdown"
               >
-                <i class="mdi mdi-bell"></i> <span class="count">1</span>
+                <i class="fa fa-envelope-o"></i> <span class="count">1</span>
               </a>
               <div
                 class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
@@ -76,7 +76,7 @@
               >
                 <a class="dropdown-item">
                   <p class="mb-0 font-weight-normal float-left">
-                    You have 4 new notifications
+                    You have 1 new notifications
                   </p>
                   <span class="badge badge-pill badge-warning float-right"
                     >View all</span
@@ -86,12 +86,13 @@
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-success">
-                      <i class="mdi mdi-alert-circle-outline mx-0"></i>
+                      <!-- <i class="mdi mdi-alert-circle-outline mx-0"></i> -->
+                      <i class="fa fa-alert"></i>
                     </div>
                   </div>
                   <div class="preview-item-content">
                     <h6 class="preview-subject font-weight-medium text-dark">
-                      Please verify your email
+                      Please set your status to not available when busy
                     </h6>
                     <p class="font-weight-light small-text">Just now</p>
                   </div>
@@ -210,7 +211,7 @@
                     ><span class="btn-switch__txt">No</span></label
                   >
                   <button class="btn btn-success btn-block">
-                    Update <i class="mdi mdi-plus"></i>
+                    Update <i class="fa fa-plus"></i>
                   </form>
                 </button>
               </div>
@@ -246,7 +247,7 @@
                     <div class="clearfix">
                       <div class="float-left">
                         <i
-                          class="mdi mdi-account-location text-info icon-lg"
+                          class="fa fa-users text-info icon-lg"
                         ></i>
                       </div>
                       <div class="float-right">
@@ -259,7 +260,7 @@
                       </div>
                     </div>
                     <p class="text-muted mt-3 mb-0">
-                      <i class="mdi mdi-reload mr-1" aria-hidden="true"></i>
+                      <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                       Patients attended to so far
                     </p>
                   </div>
@@ -348,10 +349,10 @@
                               Manage
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">
-                                <i class="fa fa-reply fa-fw"></i>Quick reply</a
+                              <a class="dropdown-item" href="/diagnostics">
+                                <i class="fa fa-reply fa-fw"></i>Diagnose</a
                               >
-                              <a class="dropdown-item" href="#">
+                             <!--  <a class="dropdown-item" href="#">
                                 <i class="fa fa-history fa-fw"></i>Another
                                 action</a
                               >
@@ -359,10 +360,10 @@
                               <a class="dropdown-item" href="#">
                                 <i class="fa fa-check text-success fa-fw"></i
                                 >Resolve Issue</a
-                              >
+                              > -->
                               <a class="dropdown-item" href="#">
                                 <i class="fa fa-times text-danger fa-fw"></i
-                                >Close Issue</a
+                                >Cancel Appointment</a
                               >
                             </div>
                           </div>

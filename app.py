@@ -231,11 +231,11 @@ def read():
         '''
     return render_template('nurse/p_read.html', r=r)
 
-@app.route('/temp')
-def temp():
+@app.route('/diagnostics')
+def diagnostics():
     # y = ids()
-    y = now()
-    return y
+    # y = now()
+    return render_template('dr/diagnostics.html')
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(12)
