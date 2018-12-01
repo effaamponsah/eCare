@@ -3,6 +3,8 @@ import sqlite3 as sql
 import os
 import random
 import datetime
+import time
+
 
 app = Flask(__name__)
 
@@ -20,8 +22,9 @@ def ids():
         id of the patients.
         The ids are deleted afterwards to prevent collision.
 
-        A more secured way can be employed in generating the ids either than the hardcoded
+        A more secured way can be employed in generating the ids other than the hardcoded
         data
+
     '''
     p_ids=['P/001', 'P/002', 'P/003', 'P/004', 'P/005', 'P/006', 'P/007', 'P/008']
     i = random.randrange(len(p_ids))
@@ -43,7 +46,6 @@ def now():
 
 @app.route('/')
 def index():
-
     if not session.get('logged_in'):
         return render_template('getstarted/index.html')
     else:
@@ -119,25 +121,23 @@ def logout():
 
 @app.route('/dr', methods=['GET', 'POST'])
 def dr():
+    con = sql.connect('hms.db')
+    c = con.cursor()
     global fullname, availble, staff_id
     temp = str(staff_id)
-    # if request.method == 'GET':
-    #     print("Name of Dr is", fullname)
+    print(temp)
+    time.sleep(1)
    
-    # print(temp)
-    # 
-    # The following 4 statement is useless
-    #  
-    # con = sql.connect('hms.db')
-    # c = con.cursor()
-    # c.execute("SELECT FName from staff WHERE Uname= ?", (temp,) )
-    # y = c.fetchone()
+    # Fetches all those the nurses sent to me
+    c.execute('SELECT * from patients_readings WHERE Sent_to= ?', (temp,))
 
-    # print(y) 
+    y = c.fetchall()
+
+    print(y) 
     
     if request.method == 'POST':
-        con = sql.connect('hms.db')
-        c = con.cursor()
+        # con = sql.connect('hms.db')
+        # c = con.cursor()
         d_available = request.form['available']
 
         if d_available == 'Yes':
@@ -151,16 +151,9 @@ def dr():
             availble = 0
             return redirect(url_for('dr'))
         print("Status from check", d_available)
+    
     print("Status", availble)
-
-
-
-
-    return render_template('dr/index.html', fullname=fullname, availble=availble)
-
-
-
-
+    return render_template('dr/index.html', fullname=fullname, availble=availble, y=y)
 
 
 @app.route('/nurse')
@@ -229,7 +222,7 @@ def read():
         nhis = str(request.form['nhis'])
         dr_available = str(request.form['availabledr'])
         timestamp = now()
-        c.execute("INSERT INTO patients_readings (P_ID, Name, Weight, Temperature,BP, NHIS, Time_Taken) VALUES(?,?,?,?,?,?,?)", (temp_id,p_n, p_w, p_t, p_bp,nhis, timestamp))
+        c.execute("INSERT INTO patients_readings (P_ID, Name, Weight, Temperature,BP, NHIS, Time_Taken, Sent_to) VALUES(?,?,?,?,?,?,?,?)", (temp_id,p_n, p_w, p_t, p_bp,nhis, timestamp, dr_available))
         con.commit()
         print("Data was sent to ", dr_available)
         print('Data successfully added')
@@ -246,4 +239,4 @@ def temp():
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(12)
-    app.run(debug=True, port=6000)
+    app.run(debug=True)
