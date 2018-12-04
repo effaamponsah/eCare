@@ -2,7 +2,7 @@ from flask import Flask, render_template, session, request, abort, redirect, fla
 import sqlite3 as sql
 import os
 import random
-import datetime
+import datetime 
 import time
 
 
@@ -24,7 +24,6 @@ def ids():
 
         A more secured way can be employed in generating the ids other than the hardcoded
         data
-
     '''
     p_ids=['P/001', 'P/002', 'P/003', 'P/004', 'P/005', 'P/006', 'P/007', 'P/008']
     i = random.randrange(len(p_ids))
@@ -35,7 +34,6 @@ def ids():
 def now():
     '''
      A small function which returns the current date and time
-
     '''
     n = datetime.datetime.now()
     return n.strftime("%Y-%m- %d %H:%M")
@@ -58,7 +56,7 @@ def index():
             return render_template('error.html')   
         print('This is new name', name)
     
-    return "Hello Boss!  <a href='/logout'>Logout</a>"
+    # return "Hello Boss!  <a href='/logout'>Logout</a>"
     
 
 
@@ -72,6 +70,8 @@ def login():
     c.execute("SELECT * from staff WHERE Uname= ? AND Password=?", (uname, password) )
     result =c.fetchall()
 
+
+
 # the result returns a list which is empty if the query is not found else returns something if 
 # a result if found
     if len(result) == 0:
@@ -79,8 +79,9 @@ def login():
     else:
         session['logged_in'] = True
 
+
+
         # the first variable gets the first of the character sequence entered and makes a route based on that
-        
         global name, fullname, availble, staff_id
         first = result[0][3][:1]
         fullname = result[0][1]
@@ -105,7 +106,7 @@ def register():
         c.execute("INSERT INTO staff (FName, LName, Uname, Password, Available) VALUES(?,?,?,?,?)", (fname,lname, uname,password,0,))
         con.commit()
         print('Data successfully added')
-        return 'Data Success'
+        return 'Data Successfully added'
        
     return render_template('getstarted/randl.html')
 
@@ -159,6 +160,7 @@ def dr():
 @app.route('/nurse')
 def nurse():
     return render_template('nurse/index.html')
+
 
 @app.route('/patientdata', methods=['GET', 'POST'])
 def patientdata():
@@ -231,11 +233,13 @@ def read():
         '''
     return render_template('nurse/p_read.html', r=r)
 
+
 @app.route('/diagnostics')
 def diagnostics():
     # y = ids()
     # y = now()
     return render_template('dr/diagnostics.html')
+
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(12)
