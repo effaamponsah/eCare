@@ -1,0 +1,5 @@
+Contriuting to eCare.
+
+
+Feel free to fork, clone and edit this piece.
+Ensure that pull requests sent have been tested well.
