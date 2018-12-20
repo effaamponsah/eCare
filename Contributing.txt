@@ -3,3 +3,8 @@ Contriuting to eCare.
 
 Feel free to fork, clone and edit this piece.
 Ensure that pull requests sent have been tested well.
+
+Note howevr that codes are meant for humans to read and understand.
+
+Please try and adjust to the following coding style.
+1.
